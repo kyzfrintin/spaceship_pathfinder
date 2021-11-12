@@ -1,0 +1,882 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://target.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radial_segments = 8
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[node name="root" type="Spatial"]
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+current = true
+target = NodePath("../ship/Position3D")
+speed = 5.0
+enabled = true
+
+[node name="ship" parent="." instance=ExtResource( 1 )]
+
+[node name="Position3D" type="Position3D" parent="ship"]
+transform = Transform( 1, 0, 0, 0, 0.973119, 0.230305, 0, -0.230305, 0.973119, 0, 0.682351, 1.21803 )
+
+[node name="target" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35833, 1.14876, -7.85493 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="target"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="target"]
+wait_time = 3.0
+one_shot = true
+
+[node name="obstacles" type="Spatial" parent="."]
+
+[node name="obstacle" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.918, 2.0264, -4.54416 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle2" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38652, 7.53622, 7.26258 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle2/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle3" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46295, -1.90918, -2.85748 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle3/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle4" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29576, -7.1941, 2.76477 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle4/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle5" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19765, -4.38297, -6.45573 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle5/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle6" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.55171, 17.0306, -4.54416 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle6/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle7" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, -7.73043, 3.22938, 7.26258 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle7/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle8" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.15607, 3.08849, -2.85748 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle8/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle9" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 9.58141, 8.83239, 2.76477 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle9/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle10" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 4.19683, -3.13013, -10.054 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle10/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle11" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 28.2295, -2.73041, -4.54416 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle11/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle12" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 15.491, 8.8423, 7.26258 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle12/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle13" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 14.3916, -0.983879, -2.85748 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle13/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle14" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 19.3879, -8.9315, 2.76477 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle14/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle15" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 8.1461, -0.956745, -6.45573 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle15/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle16" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -5.27915, -2.73041, -4.54416 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle16/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle17" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -18.0176, 8.8423, 7.26258 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle17"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle17/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle18" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -19.1171, -0.983879, -2.85748 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle18"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle18/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle19" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -14.1208, -8.9315, 2.76477 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle19"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle19/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle20" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -25.3625, -0.956745, -6.45573 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle20"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle20/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle21" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.918, 2.0264, -21.6358 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle21"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle21/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle22" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03718, 7.53622, -11.9655 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle22"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle22/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle23" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46295, -1.90918, -19.9491 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle23"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle23/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle24" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29576, -7.1941, -14.3269 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle24"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle24/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle25" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19765, -4.38297, -23.5474 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle25"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle25/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle26" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.55171, 17.0306, -21.6358 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle26"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle26/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle27" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, -8.96732, 3.22938, -10.7286 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle27"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle27/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle28" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.15607, 3.08849, -19.9491 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle28"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle28/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle29" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 9.58141, 8.83239, -14.3269 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle29"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle29/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle30" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.73504, -3.13013, -23.5474 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle30"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle30/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle31" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 28.2295, -2.73041, -21.6358 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle31"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle31/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle32" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 15.491, 8.8423, -9.82909 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle32"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle32/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle33" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 14.3916, -0.983879, -19.9491 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle33"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle33/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle34" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 19.3879, -8.9315, -14.3269 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle34"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle34/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle35" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 8.1461, -0.956745, -23.5474 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle35"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle35/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle36" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -5.27915, -2.73041, -21.6358 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle36"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle36/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle37" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -18.0176, 8.8423, -9.82909 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle37"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle37/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle38" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -19.1171, -0.983879, -19.9491 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle38"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle38/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle39" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -14.1208, -8.9315, -14.3269 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle39"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle39/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle40" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -25.3625, -0.956745, -23.5474 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle40"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle40/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle41" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.918, 2.0264, 12.9973 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle41"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle41/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle42" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38652, 7.53622, 24.804 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle42"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle42/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle43" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46295, -1.90918, 14.684 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle43"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle43/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle44" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29576, -7.1941, 20.3062 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle44"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle44/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle45" type="MeshInstance" parent="obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19765, -4.38297, 11.0857 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle45"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle45/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle46" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.55171, 17.0306, 12.9973 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle46"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle46/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle47" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, -7.73043, 3.22938, 24.804 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle47"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle47/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle48" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.15607, 3.08849, 14.684 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle48"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle48/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle49" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 9.58141, 8.83239, 20.3062 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle49"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle49/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle50" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.309266, -0.950976, 0, 0.950976, 0.309266, 0, 0, 0, 1, 2.73504, -3.13013, 11.0857 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle50"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle50/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle51" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 28.2295, -2.73041, 12.9973 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle51"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle51/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle52" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 15.491, 8.8423, 24.804 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle52"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle52/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle53" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 14.3916, -0.983879, 14.684 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle53"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle53/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle54" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 19.3879, -8.9315, 20.3062 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle54"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle54/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle55" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, 8.1461, -0.956745, 11.0857 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle55"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle55/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle56" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -5.27915, -2.73041, 12.9973 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle56"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle56/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle57" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -18.0176, 8.8423, 24.804 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle57"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle57/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle58" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -19.1171, -0.983879, 14.684 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle58"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle58/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle59" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -14.1208, -8.9315, 20.3062 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle59"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle59/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="obstacle60" type="MeshInstance" parent="obstacles"]
+transform = Transform( 0.916481, 0.400077, 0, -0.400077, 0.916481, 0, 0, 0, 1, -25.3625, -0.956745, 11.0857 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="obstacles/obstacle60"]
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/obstacle60/StaticBody"]
+shape = SubResource( 3 )
+
+[connection signal="timeout" from="target/Timer" to="target" method="_on_Timer_timeout"]
