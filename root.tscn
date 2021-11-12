@@ -15,13 +15,23 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 current = true
-target = NodePath("../ship/Position3D")
+target = NodePath("../ship2/Position3D")
 speed = 5.0
 enabled = true
 
-[node name="ship" parent="." instance=ExtResource( 1 )]
+[node name="ship1" parent="." instance=ExtResource( 1 )]
+target_dir = NodePath("../target")
+speed = 0.163
 
-[node name="Position3D" type="Position3D" parent="ship"]
+[node name="Position3D" type="Position3D" parent="ship1"]
+transform = Transform( 1, 0, 0, 0, 0.973119, 0.230305, 0, -0.230305, 0.973119, 0, 0.682351, 1.21803 )
+
+[node name="ship2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159891, 0, 5.33601 )
+target_dir = NodePath("../ship1")
+speed = 0.073
+
+[node name="Position3D" type="Position3D" parent="ship2"]
 transform = Transform( 1, 0, 0, 0, 0.973119, 0.230305, 0, -0.230305, 0.973119, 0, 0.682351, 1.21803 )
 
 [node name="target" type="Spatial" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://steering.gd" type="Script" id=1]
 [ext_resource path="res://ship.gd" type="Script" id=2]
@@ -11,6 +11,10 @@ radial_segments = 4
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.218, 0.209, 1.521 )
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.280609
+height = 1.63521
 
 [node name="ship" type="Spatial"]
 script = ExtResource( 2 )
@@ -310,3 +314,9 @@ material/0 = null
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="RigidBody" type="RigidBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.219234 )
+shape = SubResource( 3 )
